@@ -19,10 +19,32 @@
   </md-toolbar>
   <section class="main-container">
     <md-grid-list cols="36" rowHeight="60px">
-      <md-grid-tile color="primary" [colspan]="36" [rowspan]="1"   [style.background]="tilecolor">
+      <md-grid-tile color="primary" [colspan]="5" [rowspan]="1"   [style.background]="tilecolor">
+
       </md-grid-tile>
+      <md-grid-tile color="primary" [colspan]="10" [rowspan]="1"   [style.background]="tilecolor">
+    <!--    <md-input placeholder="Year eg:2016">
+        </md-input>
+        <md-input placeholder="Month eg:2">
+        </md-input> -->
+
+        <table style="width: 100%"><tr>
+          <td><md-input class="demo-full-width" id="year"
+               [(ngModel)]="inityear" name="inityear" placeholder="Year eg:2012"></md-input></td>
+          <td><md-input class="demo-full-width" id="month" [(ngModel)]="initmonth" name="initmonth" placeholder="Month"></md-input></td>
+          <td><button md-raised-button color="primary" (click)="getDaysInMonth()">check</button></td>
+        </tr></table>
+
+
+      </md-grid-tile>
+
+      <md-grid-tile color="primary" [colspan]="21" [rowspan]="1"   [style.background]="tilecolor">
+        <span md-line>{{showdates[0] | date: 'yMMM' }}</span>
+        
+      </md-grid-tile>
+
     </md-grid-list>
-    <md-grid-list cols="36" rowHeight="60px">
+    <md-grid-list cols="36" rowHeight="40px">
       <md-grid-tile color="primary" [colspan]="5" [rowspan]="1"   [style.background]="tilecolor">
       </md-grid-tile>
       <md-grid-tile *ngFor="let date of showdates" [colspan]="1" [rowspan]="1"
@@ -35,11 +57,12 @@
         [style.background]="tilecolor">
         {{date | date:"EEE"}}
       </md-grid-tile>
+      <div *ngFor="let emp of employees">
       <md-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
         [style.background]="tile.color">
-        {{tile.text}}
+        {{(tile.text == 'name') ? emp.name : ""}}
       </md-grid-tile>
-
+    </div>
     </md-grid-list>
 
 

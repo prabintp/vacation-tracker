@@ -49,3 +49,6 @@ md-card {
   display: flex;
   flex-flow: row wrap;
 }
+ table tr td{
+   padding: 0px 10px;
+ }

@@ -8,11 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent{
   constructor(){
      //called first time before the ngOnInit()
-    this.getDaysInMonth(4,2016);
+    this.getDaysInMonth();
   }
   title = 'app works!';
   tilecolor = 'lightblue';
   showdates: any[] = [];
+  inityear = 2012;
+  initmonth = 6 ;
 
 
 
@@ -23,11 +25,19 @@ export class AppComponent{
       icon: "assignment ind"
     }
   ];
-  dogs: Object[] = [
-
+  employees: Object[] = [
+      {
+        name: "danial"
+      },
+      {
+        name: "john"
+      },
+      {
+        name: "sockMonkey"
+      }
   ];
   tiles: any[] = [
-    {text: 'Name', cols: 5, rows: 1, color: 'lightblue'},
+    {text: 'name', cols: 5, rows: 1, color: 'lightblue'},
     {text: '', cols: 1, rows: 1, color: 'lightgreen'},
     {text: '', cols: 1, rows: 1, color: 'lightblue'},
     {text: '', cols: 1, rows: 1, color: 'lightgreen'},
@@ -63,14 +73,19 @@ export class AppComponent{
 
   ];
 
-  getDaysInMonth(month, year) {
-     var date = new Date(year, month, 1);
+  getDaysInMonth() {
+    console.log('enter');
+    var month = this.initmonth;
+    var year = this.inityear;
+      console.log('enter'+month+year);
+     var date = new Date(year, this.initmonth, 1);
      var days = [];
-     while (date.getMonth() === month) {
+     console.log(date.getMonth());
+     while (date.getMonth() == this.initmonth) {
         days.push(new Date(date));
         date.setDate(date.getDate() + 1);
      }
-     console.log('inside dats'+days[1].getDate())
+     console.log('inside dats'+days)
      this.showdates = days;
      return days;
    };
