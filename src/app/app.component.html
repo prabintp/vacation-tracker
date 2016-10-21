@@ -1,0 +1,47 @@
+<md-sidenav-layout fullscreen>
+  <md-sidenav #sidenav>
+    <md-nav-list>
+      <a md-list-item *ngFor="let view of views">
+        <md-icon md-list-icon>{{view.icon}}</md-icon>
+        <span md-line>{{view.name}}</span>
+        <span md-line class="secondary">{{view.description}}</span>
+      </a>
+    </md-nav-list>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.open()">
+      <md-icon>menu</md-icon>
+    </button>
+    Vacation tracker
+  <!--  <button md-fab (click)="formShowing=!formShowing">
+      <md-icon>add</md-icon>
+    </button> -->
+  </md-toolbar>
+  <section class="main-container">
+    <md-grid-list cols="36" rowHeight="60px">
+      <md-grid-tile color="primary" [colspan]="36" [rowspan]="1"   [style.background]="tilecolor">
+      </md-grid-tile>
+    </md-grid-list>
+    <md-grid-list cols="36" rowHeight="60px">
+      <md-grid-tile color="primary" [colspan]="5" [rowspan]="1"   [style.background]="tilecolor">
+      </md-grid-tile>
+      <md-grid-tile *ngFor="let date of showdates" [colspan]="1" [rowspan]="1"
+        [style.background]="tilecolor">
+        {{date | date:"d"}}
+      </md-grid-tile>
+      <md-grid-tile color="primary" [colspan]="5" [rowspan]="1"   [style.background]="tilecolor">
+      </md-grid-tile>
+      <md-grid-tile *ngFor="let date of showdates" [colspan]="1" [rowspan]="1"
+        [style.background]="tilecolor">
+        {{date | date:"EEE"}}
+      </md-grid-tile>
+      <md-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+        [style.background]="tile.color">
+        {{tile.text}}
+      </md-grid-tile>
+
+    </md-grid-list>
+
+
+  </section>
+</md-sidenav-layout>
